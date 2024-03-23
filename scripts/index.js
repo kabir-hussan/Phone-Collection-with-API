@@ -8,6 +8,18 @@ const loadPhone = async (searchText) => {
 const displayPhone = phones => {
     const phoneContainer = document.getElementById('phone-container');
     phoneContainer.textContent='';
+
+    // condition for show all button
+    const seeAllPhnContainer= document.getElementById('see-all-phn-container');
+
+    if(phones.length > 12){
+        seeAllPhnContainer.classList.remove('hidden');
+    }
+    else{
+        seeAllPhnContainer.classList.add('hidden');
+    }
+
+    phones= phones.slice(0, 12); //only show 12 phones
     phones.forEach(phone => {
         const phoneDiv = document.createElement('div');
         phoneDiv.classList = 'card p-4 bg-base-100 shadow-xl';
