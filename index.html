@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -11,20 +11,25 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <header>
-
+<body class="container mx-auto">
+    <header class="mt-8 mb-14">
+        <h1 class="text-5xl text-center font-bold">Kabir's Telecom</h1>
     </header>
     <main>
+        <!-- search button section -->
+        <section class="my-6">
+            <input id="search-field" type="text" placeholder="Search here" class="input input-ghost w-1/2 max-w-xs mx-4 ml-10 md:ml-32" />
+            <button onclick="searchBtn()" class="btn btn-outline btn-accent">Search</button>
+        </section>
         <section>
-            <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div id="phone-container" class="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             </div>
         </section>
     </main>
     <footer>
 
     </footer>
-    <!-- js angta lagai -->
+    <!-- js linking -->
     <script src="scripts/index.js"></script>
 </body>
 
