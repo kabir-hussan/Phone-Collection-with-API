@@ -58,4 +58,4 @@ const toggleLoadingSpinner= (isLoading) =>{
 
 }
 
-loadPhone();
+// loadPhone();
