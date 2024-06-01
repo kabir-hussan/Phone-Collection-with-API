@@ -30,7 +30,7 @@ const displayPhone = phones => {
         <div class="card-body items-center text-center">
             <h2 class="card-title">${phone.phone_name}</h2>
             <div class="card-actions">
-                <button class="btn btn-primary">Buy Now</button>
+                <button onclick="handleShowDetails('${phone.slug}')" class="btn btn-primary">Show Details</button>
             </div>
         </div>
     `;
@@ -45,6 +45,33 @@ const searchBtn= ()=>{
     const searchText= searchField.value;
     loadPhone(searchText); 
    
+}
+
+// Handle show details button for every phone
+const handleShowDetails= async(id)=>{
+    const res= await fetch(` https://openapi.programming-hero.com/api/phone/${id}`);
+    const data= await res.json();
+    const phone= data.data;
+    showModalDetails(phone);
+}
+
+const showModalDetails= (phone)=>{
+    console.log(phone);
+    show_details.showModal();
+    const modalDescription= document.getElementById('modal-description');
+    modalDescription.innerHTML=`
+    <div class="text-center mb-5"><img src="${phone.image}" class="mx-auto"></div>
+    <h2 class="text-3xl text-center mb-5">${phone.name}</h2>
+    <p>Brand: ${phone?.brand}</p>
+    <p>Storage: ${phone?.mainFeatures?.storage}</p>
+    <p>Released Date: ${phone?.releaseDate}</p>
+    <p>Memory Size: ${phone?.mainFeatures?.memory}</p>
+    <p>Chip set: ${phone?.mainFeatures?.chipSet}</p>
+    <p>Display Size: ${phone?.mainFeatures?.displaySize}</p>
+    <p>Bluetooth: ${phone?.others?.Bluetooth}</p>
+    <p>GPS: ${phone?.others?.GPS || 'No GPS Available'}</p>
+    <p>WLAN: ${phone?.others?.WLAN ? phone?.others?.WLAN : 'No WLAN Available'}</p>
+    `
 }
 
 const toggleLoadingSpinner= (isLoading) =>{
